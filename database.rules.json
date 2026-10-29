@@ -1,0 +1,1 @@
+{ "rules": { "groundfault": { ".read": true, ".write": true } } }
