@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ground Fault Detection · Live</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head><body>
+<div id="loader"><div class="ring"><div class="ring2"></div><span>⚡</span></div>
+  <h2>Ground Fault Detection</h2><p id="lstep">Starting system…</p>
+  <div class="lbar"><i id="lfill"></i></div></div>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<header>
+  <div><h1>⚡ Ground Fault <span>Detection System</span></h1>
+  <p>Live voltage &amp; current monitoring · ESP32 + ADS1115 + ACS712</p></div>
+  <div class="conn" id="conn"><i></i><b id="connTxt">Connecting…</b></div>
+</header>
+<main>
+  <section class="card hero" id="hero">
+    <div class="gauge"><svg viewBox="0 0 200 120"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2bffb0"/><stop offset=".5" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff2e63"/></linearGradient></defs>
+      <path d="M20 100 A80 80 0 0 1 180 100" class="track"/><path d="M20 100 A80 80 0 0 1 180 100" class="fill" id="arc" pathLength="100"/></svg>
+      <div class="gv"><span id="cur">0.000</span><small>Ampere</small></div></div>
+    <div class="state"><div class="badge" id="badge">NORMAL</div>
+      <p id="msg">Waiting for live data from ESP32…</p>
+      <div class="th"><span class="d y"></span>Warning ≥ 0.50 V or A <span class="d r"></span>Alert ≥ 1.00 V or A</div></div>
+  </section>
+  <section class="card stat s1"><h3>Voltage (A0)</h3><big id="volt">0.000 V</big><div class="bar"><i id="bar0"></i></div></section>
+  <section class="card stat s2"><h3>Current</h3><big id="ma">0 mA</big><div class="bar"><i id="bar1"></i></div></section>
+  <section class="card stat s3"><h3>ACS712 output (A1)</h3><big id="sv">0.000 V</big><small id="last">no data yet</small></section>
+  <section class="card chart"><h3>Live graph</h3><canvas id="chart"></canvas></section>
+  <section class="card events"><h3>Fault event log</h3><ul id="events"><li class="empty">No events yet</li></ul></section>
+</main>
+<footer>ESP32 → Firebase Realtime Database → this dashboard · Demo thresholds, not validated safety limits</footer>
+<script type="module" src="app.js"></script>
+</body></html>
